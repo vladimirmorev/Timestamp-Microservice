@@ -2,21 +2,13 @@
   "name": "timestamp_microservice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node test.js",
-    "bundle": "browserify client.js -o bundle.js",
-    "start": "npm run bundle && node server.js"
+    "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "beefy": "^2.1.5",
-    "browserify": "^13.0.0",
-    "tape": "^4.4.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.0",
+  "author": "vladimir morev",
+  "license": "ISC",  
+  "dependencies": {    
     "express": "^4.13.4"
   }
 }
