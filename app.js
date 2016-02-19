@@ -1,21 +1,31 @@
 var express = require('express');
+var moment = require('moment');
 var app = express();
 
 app.get('/', function (req, res) {  
   res.sendFile(__dirname + '/index.html');
 });
 
-function unixDate() {
-  
+function unixToNatural(unix) {
+  return moment.unix(unix).format('MMMM D, YYYY');
 }
 
-function naturalDate() {
-
+function naturalToUnix(natural) {
+  return moment(natural, 'MMMM D, YYYY').format('X');
 }
 
 app.get('/:query', function (req, res) {
-  var date = new Date(req.params.query);
-  res.json( {"unix":date.getDate(),"natural":date});
+  var date = req.params.query;  
+  var obj = {'unix':null,'natural':null};
+  if (isNaN(+date) && moment(date, "MMMM D, YYYY").isValid()) {
+    obj.unix = naturalToUnix(date);
+    obj.natural = unixToNatural(obj.unix);
+  } 
+  if (+date >= 0){ 
+    obj.unix = +date;
+    obj.natural = unixToNatural(obj.unix);
+  }
+  res.json(obj);
 });
 
 app.listen(3000, function () {
