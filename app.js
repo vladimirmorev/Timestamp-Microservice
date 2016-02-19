@@ -15,7 +15,7 @@ function naturalDate() {
 
 app.get('/:query', function (req, res) {
   var date = new Date(req.params.query);
-  res.json( {"unix":123,"natural":23});
+  res.json( {"unix":date.getDate(),"natural":date});
 });
 
 app.listen(3000, function () {

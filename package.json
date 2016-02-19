@@ -7,8 +7,9 @@
     "start": "node app.js"
   },
   "author": "vladimir morev",
-  "license": "ISC",  
-  "dependencies": {    
-    "express": "^4.13.4"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "moment": "^2.11.2"
   }
 }
