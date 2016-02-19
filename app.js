@@ -1,13 +1,21 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var app = express();
 
-// Config body-parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.get('/', function (req, res) {  
+  res.sendFile(__dirname + '/index.html');
+});
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+function unixDate() {
+  
+}
+
+function naturalDate() {
+
+}
+
+app.get('/:query', function (req, res) {
+  var date = new Date(req.params.query);
+  res.json( {"unix":123,"natural":23});
 });
 
 app.listen(3000, function () {
